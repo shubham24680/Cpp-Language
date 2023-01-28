@@ -2,6 +2,10 @@
 #include <conio.h>
 using namespace std;
 
+// Urinary Operators -> Overloading Possible
+// Binary Operators -> Overloading Possible
+// Terniry Operators -> Overloading Not Possible
+
 class Number
 {
 public:
