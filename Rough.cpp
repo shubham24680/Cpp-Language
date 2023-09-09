@@ -1,51 +1,55 @@
-#include <iostream>
-#include <conio.h>
+#include<iostream>
+#include<limits.h>
 using namespace std;
-#define V 4
-#define INF 99999
 
-void printSolution(int dist[][V])
+class Solution
 {
-	cout << "The following matrix shows the shortest distances between every pair of vertices \n";
-	for (int i = 0; i < V; i++)
-	{
-		for (int j = 0; j < V; j++)
-		{
-			if (dist[i][j] == INF)
-				cout << "INF"
-					 << " ";
-			else
-				cout << dist[i][j] << " ";
-		}
-		cout << endl;
-	}
-}
+public:
+    int myAtoi(string s)
+    {
+        if (s.size() == 0)
+            return 0;
 
-void floydWarshall(int dist[][V])
-{
-	int i, j, k;
-	for (k = 0; k < V; k++)
-	{
-		for (i = 0; i < V; i++)
-		{
-			for (j = 0; j < V; j++)
-			{
-				if (dist[i][j] > (dist[i][k] + dist[k][j]) && (dist[k][j] != INF && dist[i][k] != INF))
-					dist[i][j] = dist[i][k] + dist[k][j];
-			}
-		}
-	}
-	printSolution(dist);
-}
+        int len = s.size(), i = 0, sign = 1;
+        while (i < len && s[i] == ' ')
+            i++;
+
+        if (i == len)
+            return 0;
+
+        if (s[i] == '-')
+        {
+            sign = 0;
+            i++;
+        }
+        else if (s[i] == '+')
+            i++;
+
+        long long int out = 0;
+        while (i < len && s[i] >= '0' && s[i] <= '9')
+        {
+            out = out * 10;
+            if (out <= INT_MIN || out >= INT_MAX)
+                break;
+
+            out = out + (s[i] - '0');
+            i++;
+        }
+
+        if (sign == 0)
+            out = -1 * out;
+
+        if (out <= INT_MIN)
+            return INT_MIN;
+        else if (out >= INT_MAX)
+            return INT_MAX;
+
+        return out;
+    }
+};
 
 int main()
 {
-	int graph[V][V] = {{0, 5, INF, 10},
-					   {INF, 0, 3, INF},
-					   {INF, INF, 0, 1},
-					   {INF, INF, INF, 0}};
-
-	floydWarshall(graph);
-	getch();
-	return 0;
+    Solution find;
+    cout << find.myAtoi("-67565") << endl;
 }
