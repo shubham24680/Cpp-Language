@@ -1,11 +1,8 @@
 #include<iostream>
 using namespace std;
+typedef char x[10];
 
 int main() {
-    int i = 1;
-    // cout << ++i + ++i + ++i + ++i + ++i + ++i;
-    int a = ++i;
-    int b = ++i;
-    cout << a + b;
-    return 0;
+    int n = dist.
+    return count;
 }
