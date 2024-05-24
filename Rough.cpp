@@ -1,8 +1,24 @@
 #include<iostream>
 using namespace std;
-typedef char x[10];
+
+class a {
+    // public:
+    int n1 = 10;
+};
+class B {
+    public:
+    int n1 = 11;
+};
+class C : public a {
+    public:
+    void display() {
+        cout << n1;
+    }
+};
 
 int main() {
-    int n = dist.
-    return count;
+    C c;
+    // cout << c.B::n1;
+    c.display();
+    return 0;
 }
